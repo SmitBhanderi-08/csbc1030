@@ -1,0 +1,37 @@
+-- Users table
+CREATE TABLE users (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  username VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  street VARCHAR(255) NOT NULL,
+  suite VARCHAR(255) NOT NULL,
+  city VARCHAR(255) NOT NULL,
+  zipcode VARCHAR(20) NOT NULL,
+  lat DECIMAL(9,6) NOT NULL,
+  lng DECIMAL(9,6) NOT NULL,
+  phone VARCHAR(20) NOT NULL,
+  website VARCHAR(255) NOT NULL,
+  company_name VARCHAR(255) NOT NULL,
+  catchPhrase TEXT NOT NULL,
+  bs VARCHAR(255) NOT NULL
+);
+
+-- Posts table
+CREATE TABLE posts (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  userId INT NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  body TEXT NOT NULL,
+  FOREIGN KEY (userId) REFERENCES users(id)
+);
+
+-- Comments table
+CREATE TABLE comments (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  postId INT NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  body TEXT NOT NULL,
+  FOREIGN KEY (postId) REFERENCES posts(id)
+);
